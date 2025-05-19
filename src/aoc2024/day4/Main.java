@@ -5,7 +5,9 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
-enum DirectionsPart1 {
+public class Main {
+
+    enum DirectionsPart1 {
     UP(-1, 0),
     DOWN(1, 0),
     LEFT(0, -1),
@@ -24,22 +26,21 @@ enum DirectionsPart1 {
     }
 }
 
-enum DirectionsPart2 {
-    UPLEFT(-1, -1),
-    UPRIGHT(-1, 1),
-    DOWNLEFT(1, -1),
-    DOWNRIGHT(1, 1);
+    enum DirectionsPart2 {
+        UPLEFT(-1, -1),
+        UPRIGHT(-1, 1),
+        DOWNLEFT(1, -1),
+        DOWNRIGHT(1, 1);
 
-    final int directionRow;
-    final int directionColumn;
+        final int directionRow;
+        final int directionColumn;
 
-    DirectionsPart2(int directionRow, int directionColumn) {
-        this.directionRow = directionRow;
-        this.directionColumn = directionColumn;
+        DirectionsPart2(int directionRow, int directionColumn) {
+            this.directionRow = directionRow;
+            this.directionColumn = directionColumn;
+        }
     }
-}
 
-public class Main {
     public static void main(String[] args) {
 
         try (FileReader fileReader = new FileReader("src/aoc2024/day4/Input.txt");
