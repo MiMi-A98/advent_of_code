@@ -148,16 +148,4 @@ public class Main {
         }
         return sum;
     }
-
-//    private static long calculateCheckSum(List<Integer> compactFileSystem) {
-//        long sum = 0;
-//        int index = 0;
-//
-//        for (int i = 0; i < compactFileSystem.size(); i++) {
-//            long result = (long) i * compactFileSystem.get(i);
-//            sum += result;
-//        }
-//        return sum;
-//    }
-
 }
