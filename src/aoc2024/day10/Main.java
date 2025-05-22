@@ -49,7 +49,7 @@ public class Main {
             Map<Coordinates, Integer> startPoints = findTrailsScores(summits);
             List<Integer> trailHeadsScores = startPoints.values().stream().toList();
 
-            Map<Coordinates, Integer> ratings = findTrailsRateings();
+            Map<Coordinates, Integer> ratings = findTrailsRatings();
             List<Integer> trailRatings = ratings.values().stream().toList();
 
             long sumPart1 = calculateSum(trailHeadsScores);
@@ -73,19 +73,6 @@ public class Main {
             }
         }
         return summits;
-    }
-
-    private static List<Coordinates> findTrailsHeads() {
-        List<Coordinates> trailHeads = new ArrayList<>();
-        for (int row = 0; row < input.length; row++) {
-            for (int column = 0; column < input[0].length; column++) {
-                int current = input[row][column];
-                if (current == 0) {
-                    trailHeads.add(new Coordinates(row, column));
-                }
-            }
-        }
-        return trailHeads;
     }
 
     private static Map<Coordinates, Integer> findTrailsScores(List<Coordinates> summits) {
@@ -128,7 +115,7 @@ public class Main {
         return startPoints;
     }
 
-    private static Map<Coordinates, Integer> findTrailsRateings() {
+    private static Map<Coordinates, Integer> findTrailsRatings() {
         int rows = input.length;
         int cols = input[0].length;
 
