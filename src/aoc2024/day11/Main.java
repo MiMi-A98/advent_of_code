@@ -32,36 +32,41 @@ public class Main {
         }
     }
 
+/*  Solution for first part
+    Commented because solution for part 2 works for both parts,
+    but I didn't want to erase this solution
 
-//    private static void part1(int blinks, List<String> stonesLine) {
-//        for (int i = 0; i < blinks; i++) {
-//            List<String> temporarelyList = new ArrayList<>();
-//            for (int j = 0; j < stonesLine.size(); j++) {
-//                String stone = stonesLine.get(j);
-//                if (stone.equals("0")) {
-//                    String s = "1";
-//                    temporarelyList.add(s);
-//
-//                } else if (stone.length() % 2 == 0) {
-//                    int mid = stone.length() / 2;
-//                    String left = stone.substring(0, mid);
-//                    String right = stone.substring(mid);
-//
-//                    left = left.replaceFirst("^0+(?!$)", "");
-//                    right = right.replaceFirst("^0+(?!$)", "");
-//
-//                    temporarelyList.add(left);
-//                    temporarelyList.add(right);
-//                } else {
-//                    long newStoneValue = Long.parseLong(stone) * 2024;
-//                    temporarelyList.add(String.valueOf(newStoneValue));
-//                }
-//            }
-//
-//            stonesLine.clear();
-//            stonesLine.addAll(temporarelyList);
-//        }
-//    }
+    private static void part1(int blinks, List<String> stonesLine) {
+        for (int i = 0; i < blinks; i++) {
+            List<String> temporarilyList = new ArrayList<>();
+            for (int j = 0; j < stonesLine.size(); j++) {
+                String stone = stonesLine.get(j);
+                if (stone.equals("0")) {
+                    String s = "1";
+                    temporarilyList.add(s);
+
+                } else if (stone.length() % 2 == 0) {
+                    int mid = stone.length() / 2;
+                    String left = stone.substring(0, mid);
+                    String right = stone.substring(mid);
+
+                    left = left.replaceFirst("^0+(?!$)", "");
+                    right = right.replaceFirst("^0+(?!$)", "");
+
+                    temporarilyList.add(left);
+                    temporarilyList.add(right);
+                } else {
+                    long newStoneValue = Long.parseLong(stone) * 2024;
+                    temporarilyList.add(String.valueOf(newStoneValue));
+                }
+            }
+
+            stonesLine.clear();
+            stonesLine.addAll(temporarilyList);
+        }
+    }
+
+*/
 
     private static Map<String, Long> generateRocks(int blinks, List<String> stonesLine) {
         Map<String, Long> newStones = new HashMap<>();
@@ -72,15 +77,15 @@ public class Main {
         }
 
         for (int i = 0; i < blinks; i++) {
-            Map<String, Long> temporarelyRocks = new HashMap<>();
+            Map<String, Long> temporaryRocks = new HashMap<>();
 
             for (Map.Entry<String, Long> entry : newStones.entrySet()) {
                 String current = entry.getKey();
-                Long occurences = entry.getValue();
+                Long occurrences = entry.getValue();
 
                 if (current.equals("0")) {
                     String s = "1";
-                    temporarelyRocks.merge(s, occurences, Long::sum);
+                    temporaryRocks.merge(s, occurrences, Long::sum);
                 } else if (current.length() % 2 == 0) {
                     int mid = current.length() / 2;
                     String left = current.substring(0, mid);
@@ -89,14 +94,14 @@ public class Main {
                     left = left.replaceFirst("^0+(?!$)", "");
                     right = right.replaceFirst("^0+(?!$)", "");
 
-                    temporarelyRocks.merge(left, occurences, Long::sum);
-                    temporarelyRocks.merge(right, occurences, Long::sum);
+                    temporaryRocks.merge(left, occurrences, Long::sum);
+                    temporaryRocks.merge(right, occurrences, Long::sum);
                 } else {
                     long newStoneValue = Long.parseLong(current) * 2024;
-                    temporarelyRocks.merge(String.valueOf(newStoneValue), occurences, Long::sum);
+                    temporaryRocks.merge(String.valueOf(newStoneValue), occurrences, Long::sum);
                 }
             }
-            newStones = temporarelyRocks;
+            newStones = temporaryRocks;
         }
         return newStones;
     }
